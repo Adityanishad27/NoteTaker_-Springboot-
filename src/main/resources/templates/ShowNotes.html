@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"  th:replace="~{base::layout(~{::section})}">
+<head>
+<meta charset="UTF-8">
+<title  th:text="${title}">Show-Notes</title>
+</head>
+<body>
+
+<section>
+
+
+<!-- Message  from session  -->
+
+<div th:if="${session.message}"  th:classappend="${session.message.type}"    class="alert" >
+
+ <p class="text-center" th:text="${session.message.content}">   </p>
+       
+ <th:block th:text="${@sessionHelper.removeMessageFromSession()}"></th:block>
+</div>
+
+
+
+
+
+  
+ 
+   <br>
+   <h1 class="text-uppercase"> show all notes </h1>
+   
+   
+   <div class="row">
+   
+   
+   <div class="col-12">
+     
+ 
+	 
+	 <div class="card "  th:each="notes:${getAllNotes}" >   
+  <img class="card-img-top " style="max-width: 50px"  src="img/pencil.png" alt="Card image cap">
+ 
+  <div class="card-body px-5"  >
+ <h3  hidden=""   th:text="${notes.id}"> </h3>  <!-- Hidden = required note id  if we need  -->
+    <h5 class="card-title"th:text="${notes.title}"  > </h5>
+    <p class="card-text"  th:text="${notes.content}"  > </p> 
+   <div class="container text-align">
+    <a th:href="@{'delete/'+${notes.id}}"  class="btn btn-danger">DELETE</a>
+   
+  <a th:href="@{'update/'+${notes.id}}" class="btn btn-primary">UPDATE</a>
+   </div>
+  </div>
+</div>
+	 
+   </div>
+  
+   </div>
+   
+ 
+</section>
+
+</body>
+</html>

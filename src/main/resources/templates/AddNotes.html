@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"  th:replace="~{base::layout(~{::section})}">
+<head>
+<meta charset="UTF-8">
+<title th:text="${title}">Add-Notes</title>
+</head>
+<body>
+
+
+ <section>
+ 
+ 
+ 
+ 
+
+ 
+ 
+ <div th:if="${session.message}"  th:classappend="${session.message.type}"    class="alert alert-success" >
+
+ <p class="text-center" th:text="${session.message.content}">   </p>
+      
+ <th:block th:text="${@sessionHelper.removeMessageFromSession()}"></th:block>
+</div>
+ 
+ 
+   
+   
+   <br>
+  <h1 style="text-align: center;">Please Fill your Notes details</h1> 
+ <br>
+ 
+ <form th:action="@{/Process_SaveNotes}"  method="post" style="margin-left: 30px; margin-right: 30px" >
+  <div class="form-group">
+    <label for="title">Note Title</label>
+    <input  name="title" type="text" class="form-control" id="title" aria-describedby="emailHelp" placeholder="Enter Title " required="required">
+  
+  </div>
+  <div class="form-group">
+    <label for="content">Note Content</label>
+    <textarea  name="content" class="form-control" id="content" placeholder="Enter Your content Here" style="height: 300px" required="required"></textarea>
+  </div>
+  <div class="container text-center">
+     <button type="submit" class="btn btn-primary">SAVE </button>
+      <button type="reset" class="btn btn-primary">RESET</button>
+  </div>
+  
+  
+  
+   
+</form>
+ 
+ </section>
+
+</body>
+</html>

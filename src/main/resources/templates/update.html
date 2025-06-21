@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"  th:replace="~{base::layout(~{::section})}">
+<head>
+<meta charset="UTF-8">
+<title th:text="${title}">Update-Notes</title>
+</head>
+<body>
+
+
+ <section>
+ <div class="container-fluid p-0 m-0">
+  
+   </div>
+   <h1> Update Notes</h1>
+   
+   	
+   
+   <form th:action="@{/process_UpdateNotes}"  method="post" th:object="${note}"  >
+   
+   <input type="hidden"  th:value="${note.id}"  name="id"> <!--  required contact id  -->
+  <div class="form-group">
+    <label for="title">Note Title</label>
+    <input   name="title"  th:value="${note.title}" class="form-control" id="title" aria-describedby="emailHelp" placeholder="Enter Title " required="required" />
+  </div>
+  <div class="form-group">
+    <label for="content">Content</label>
+    <textarea  th:text="${note.content}"  name="content" class="form-control" id="content" placeholder="Enter Your content Here" style="height: 300px" required="required" >
+  
+    </textarea>
+  </div>
+  <div class="container text-center">
+     <button type="submit" class="btn btn-success">SAVE YOUR NOTE</button>
+  </div>
+
+</form>
+   
+ 
+ 
+ 
+ </section>
+
+</body>
+</html>
