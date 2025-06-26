@@ -39,7 +39,7 @@ public class Controller {
 		
 		model.addAttribute("title", "HOME - NoteTaker");
 		
-		return "home";
+		return "index";
 	}
 
 	
